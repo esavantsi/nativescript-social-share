@@ -5,7 +5,7 @@
      * @param {ImageSource} image - The image to share.
      * @param {string} [subject] - The subject of the share *** ANDROID ONLY ***
      */
-    export function shareImage(image?: ImageSource, subject?: string);
+    export function shareImage(image?: ImageSource, subject?: string): Promise<void>;
 
 
     /**
@@ -13,7 +13,7 @@
     * @param {string} text - Text to share.
     * @param {string} [subject] - The subject of the share *** ANDROID ONLY ***
     */
-    export function shareText(text: string, subject?: string);
+    export function shareText(text: string, subject?: string): Promise<void>;
 
 
     /**
@@ -22,4 +22,4 @@
      * @param {string} text - Text to share with URL.
      * @param {string} [subject] - The subject of the share *** ANDROID ONLY ***
      */
-    export function shareUrl(url: string, text: string, subject?: string);
+    export function shareUrl(url: string, text: string, subject?: string): Promise<void>;

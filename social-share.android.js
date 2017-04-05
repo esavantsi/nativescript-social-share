@@ -14,6 +14,7 @@ function share(intent, subject) {
 	var shareIntent = android.content.Intent.createChooser(intent, subject);
 	shareIntent.setFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK);
 	context.startActivity(shareIntent);
+	return Promise.resolve();
 }
 
 module.exports = {
@@ -39,13 +40,13 @@ module.exports = {
 		intent.putExtra(android.content.Intent.EXTRA_STREAM,
 			android.net.Uri.fromFile(newFile));
 
-		share(intent, subject);
+		return share(intent, subject);
 	},
 	shareText: function(text, subject) {
 		var intent = getIntent("text/plain");
 
 		intent.putExtra(android.content.Intent.EXTRA_TEXT, text);
-		share(intent, subject);
+		return share(intent, subject);
 	},
 	shareUrl: function(url, text, subject) {
 		var intent = getIntent("text/plain");
@@ -53,6 +54,6 @@ module.exports = {
 		intent.putExtra(android.content.Intent.EXTRA_TEXT, url);
 		intent.putExtra(android.content.Intent.EXTRA_SUBJECT, text);
 
-		share(intent, subject);
+		return share(intent, subject);
 	}
 };
